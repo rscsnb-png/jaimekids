@@ -655,12 +655,17 @@ document.getElementById("enquiry").addEventListener("submit", async e => {
   try {
     const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) });
     const j = await r.json().catch(() => ({}));
-    if (!r.ok || String(j.success) === "false") throw new Error(j.message || "Send failed");
+    if (/activat/i.test(j.message || "")) {
+      n.style.background = "#fff4d6"; n.style.color = "#7a5300";
+      n.textContent = "Almost there: this contact form still needs to be activated. Please check the J'aimeKids inbox for the activation email from FormSubmit.";
+      n.classList.add("show"); return;
+    }
+    if (!r.ok || String(j.success) === "false") throw new Error(j.message || ("HTTP " + r.status));
     n.style.background = ""; n.style.color = "";
     n.textContent = "Thank you, " + data.Name + ". Your message has been sent and we'll be in touch soon.";
     n.classList.add("show"); f.reset();
   } catch (err) {
-    bad("Sorry, your message couldn't be sent just now. Please try again later or call us on 010 006 5199.");
+    bad("Sorry, your message couldn't be sent just now (" + (err && err.message ? err.message : "network error") + "). Please try again later or call us on 010 006 5199.");
   } finally {
     btn.disabled = false; btn.textContent = "Send message";
   }
