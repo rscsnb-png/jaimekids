@@ -565,6 +565,16 @@ const GALLERY_CATS = {
   media:"Historical media coverage", current:"Current initiatives"
 };
 const GALLERY = [
+  { src:"img/gallery/hospital-01.jpg", alt:"A smiling boy in a hospital bed shows off the gift he received during a J'aimeKids hospital visit", cat:"hospital" },
+  { src:"img/gallery/hospital-02.jpg", alt:"A young girl tries on light-up horns while a volunteer kneels beside her at a ward Christmas party", cat:"hospital" },
+  { src:"img/gallery/hospital-03.jpg", alt:"A smiling nurse helps a young boy unwrap a Christmas gift in his cot", cat:"hospital" },
+  { src:"img/gallery/hospital-04.jpg", alt:"A volunteer in red hands a toy to a little girl sitting in her hospital cot", cat:"hospital" },
+  { src:"img/gallery/hospital-05.jpg", alt:"A volunteer bends down to greet a young boy on the paediatric ward", cat:"hospital" },
+  { src:"img/gallery/hospital-06.jpg", alt:"A volunteer helps a boy open a dinosaur gift bag beside his hospital bed", cat:"hospital" },
+  { src:"img/gallery/hospital-07.jpg", alt:"A toddler plays with a new toy car and motorbike in his hospital cot", cat:"hospital" },
+  { src:"img/gallery/hospital-08.jpg", alt:"A toddler holds a new teddy bear on the paediatric ward", cat:"hospital" },
+  { src:"img/gallery/hospital-09.jpg", alt:"A young boy stands by his bed with a toy doctor's kit and an inflatable Santa", cat:"hospital" },
+  { src:"img/gallery/hospital-10.jpg", alt:"A boy with his leg in a cast sits on his bed at Leratong Hospital with new toy soldiers and a helicopter", cat:"hospital" },
   { src:"img/gallery/truck-2012-1.jpg", alt:"Volunteers on the lit-up Christmas truck hand out gifts to children and families gathered alongside", year:"2012", cat:"truck" },
   { src:"img/gallery/truck-2012-2.jpg", alt:"The Christmas truck, decorated in red with fairy lights and Imperial Truck Hire branding, with young volunteers aboard", year:"2012", cat:"truck" },
   { src:"img/gallery/truck-2012-3.jpg", alt:"Santa joins children and families during the Christmas truck drive", year:"2012", cat:"truck" },
@@ -632,7 +642,7 @@ function renderGallery(f){
     const pics = GALLERY.filter(g => g.cat===k);
     if (pics.length) pics.forEach(g => {
       const fig = document.createElement("figure"); fig.style.margin = 0;
-      fig.innerHTML = `<img src="${g.src}" alt="${g.alt}" loading="lazy" style="aspect-ratio:1;object-fit:cover;object-position:50% 25%;border-radius:16px;width:100%"><figcaption style="font-size:.82rem;color:var(--ink-soft);margin-top:6px">${g.year ? "Historical photo · " + g.year : "Current initiative"}</figcaption>`;
+      fig.innerHTML = `<img src="${g.src}" alt="${g.alt}" loading="lazy" style="aspect-ratio:1;object-fit:cover;object-position:50% 25%;border-radius:16px;width:100%"><figcaption style="font-size:.82rem;color:var(--ink-soft);margin-top:6px">${g.year ? "Historical photo · " + g.year : (g.cat === "current" ? "Current initiative" : "Historical photo")}</figcaption>`;
       grid.appendChild(fig);
     });
     else {
