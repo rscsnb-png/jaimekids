@@ -110,7 +110,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdro
 .campaign{background:var(--ink);color:#fff}
 .campaign .eyebrow{color:var(--yellow)}
 .campaign .lead{color:#d7d4e6;font-size:1.15rem;margin-top:12px}
-.camp-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;max-width:860px}
+.camp-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:40px;align-items:start}
+.camp-photo{margin:0}.camp-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
 @media (max-width:900px){.camp-grid{grid-template-columns:1fr}}
 .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:560px){.amounts{grid-template-columns:repeat(2,1fr)}}
@@ -310,17 +311,11 @@ footer .logo{width:96px;height:96px;border-radius:50%;margin-bottom:14px}
 
       <div class="provinces" style="margin-top:18px"><span>Mpumalanga</span><span>Gauteng</span><span>Western Cape</span><span>KwaZulu-Natal</span></div>
       <div class="camp-grid">
+        <figure class="camp-photo"><img src="img/gallery/outreach-01.jpg" alt="A girl beams as she holds up her new Christmas gift" loading="lazy"></figure>
         <div>
-          <h3>Choose your gift</h3>
-          <p class="small" style="margin:6px 0 16px">Each option opens our official BackaBuddy campaign, where you choose your amount.</p>
-          <div class="amounts">
-            <a class="amount donate-link" style="--c:var(--red)" href="#" target="_blank" rel="noopener"><b>R50</b><span>Contribute towards a Christmas surprise</span></a>
-            <a class="amount donate-link" style="--c:var(--orange)" href="#" target="_blank" rel="noopener"><b>R100</b><span>Help buy a Christmas gift</span></a>
-            <a class="amount donate-link" style="--c:#c98f00" href="#" target="_blank" rel="noopener"><b>R150</b><span>Create a special Christmas for one child</span></a>
-            <a class="amount donate-link" style="--c:var(--green)" href="#" target="_blank" rel="noopener"><b>R750</b><span>Reach five children</span></a>
-            <a class="amount donate-link" style="--c:var(--blue)" href="#" target="_blank" rel="noopener"><b>R1 500</b><span>Reach ten children</span></a>
-            <a class="amount donate-link" style="--c:var(--purple)" href="#" target="_blank" rel="noopener"><b>R7 500</b><span>Reach fifty children</span></a>
-          </div>
+          <h3 style="font-size:1.8rem">One gift can make a child's Christmas.</h3>
+          <p class="small" style="margin:8px 0 20px;font-size:1rem">Every donation, big or small, helps us put a gift into a child's hands this December.</p>
+          <a class="btn btn-donate donate-link" href="#" target="_blank" rel="noopener">Donate on BackaBuddy</a>
 
           <div class="progress" id="progress" hidden>
             <div style="display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px"><span id="raised"></span><span>of R54 750</span></div>
@@ -328,7 +323,7 @@ footer .logo{width:96px;height:96px;border-radius:50%;margin-bottom:14px}
             <p class="small" id="asof"></p>
           </div>
 
-          <div class="tax"><strong>Tax benefit:</strong> J'aimeKids is registered with SARS as a Public Benefit Organisation. Section 18A tax certificates can be issued for qualifying donations. <a href="#contact-form" style="color:#c8f0ad">Send us a message</a> to request yours.</div>
+          <div class="tax" style="margin-top:28px"><strong>Tax benefit:</strong> J'aimeKids is registered with SARS as a Public Benefit Organisation. Section 18A tax certificates can be issued for qualifying donations. <a href="#contact-form" style="color:#c8f0ad">Send us a message</a> to request yours.</div>
 
           <h3 style="margin-top:30px">Can't give right now? Share instead.</h3>
           <p class="small">Every share helps another family or business find the campaign.</p>
