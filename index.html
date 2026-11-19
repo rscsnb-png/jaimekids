@@ -564,7 +564,11 @@ const GALLERY_CATS = {
   horses:"Therapeutic horseback riding", outreach:"Community outreach", volunteers:"Volunteers",
   media:"Historical media coverage", current:"Current initiatives"
 };
-const GALLERY = [];
+const GALLERY = [
+  { src:"img/gallery/horses-2013-1.jpg", alt:"A girl in a riding helmet meets a horse, supported by a helper, at the 2013 therapeutic riding day", year:"2013", cat:"horses" },
+  { src:"img/gallery/horses-2013-2.jpg", alt:"Volunteers and a young boy stroke a grey pony together at the 2013 therapeutic riding day", year:"2013", cat:"horses" },
+  { src:"img/gallery/horses-2013-3.jpg", alt:"A boy in a wheelchair reaches out to touch a grey pony while volunteers help, 2013", year:"2013", cat:"horses" }
+];
 /* ============================== */
 
 document.querySelectorAll(".donate-link").forEach(a => a.href = SITE.donateUrl);
@@ -621,7 +625,7 @@ function renderGallery(f){
     const pics = GALLERY.filter(g => g.cat===k);
     if (pics.length) pics.forEach(g => {
       const fig = document.createElement("figure"); fig.style.margin = 0;
-      fig.innerHTML = `<img src="${g.src}" alt="${g.alt}" loading="lazy" style="aspect-ratio:1;object-fit:cover;border-radius:16px;width:100%"><figcaption style="font-size:.82rem;color:var(--ink-soft);margin-top:6px">${g.year ? "Historical photo · " + g.year : "Current initiative"}</figcaption>`;
+      fig.innerHTML = `<img src="${g.src}" alt="${g.alt}" loading="lazy" style="aspect-ratio:1;object-fit:cover;object-position:50% 25%;border-radius:16px;width:100%"><figcaption style="font-size:.82rem;color:var(--ink-soft);margin-top:6px">${g.year ? "Historical photo · " + g.year : "Current initiative"}</figcaption>`;
       grid.appendChild(fig);
     });
     else {
