@@ -530,7 +530,7 @@ footer .logo{width:96px;height:96px;border-radius:50%;margin-bottom:14px}
         <p>J'aimeKids respects your privacy and handles personal information in line with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
         <p><strong>What we collect:</strong> only the details you give us through our enquiry form or by phone, such as your name, contact details, province and message.</p>
         <p><strong>Why we collect it:</strong> to respond to your enquiry, coordinate volunteering, sponsorships and donations, and issue Section 18A certificates where you request them.</p>
-        <p><strong>How messages reach us:</strong> messages sent through our contact form are delivered to our inbox by email through FormSubmit, a form delivery service. We do not use them for marketing.</p>
+        <p><strong>How messages reach us:</strong> messages sent through our contact form are delivered to our inbox by email through Web3Forms, a form delivery service. We do not use them for marketing.</p>
         <p><strong>How we protect it:</strong> we keep your information secure, share it only with people who need it to help you, and never sell it.</p>
         <p><strong>Online donations:</strong> donations are processed by BackaBuddy. Your payment details are handled under BackaBuddy's own privacy policy and are never seen or stored by J'aimeKids.</p>
         <p><strong>Your rights:</strong> you may ask to see, correct or delete the information we hold about you, or object to its use, by calling 010 006 5199. You may also lodge a complaint with the Information Regulator of South Africa.</p>
@@ -659,8 +659,9 @@ function renderGallery(f){
 chips(document.getElementById("gfilters"), [["all","All"], ...Object.entries(GALLERY_CATS)], renderGallery);
 renderGallery("all");
 
-// Contact form → emailed to J'aimeKids via FormSubmit
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + "rscsnb" + "@" + "gmail.com";
+// Contact form → emailed to J'aimeKids via Web3Forms
+const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+const FORM_KEY = "659334fd-1802-4a9e-b535-2a5cf4732383";
 document.getElementById("enquiry").addEventListener("submit", async e => {
   e.preventDefault();
   const f = e.target, n = document.getElementById("notice"), btn = document.getElementById("sendbtn");
@@ -671,8 +672,9 @@ document.getElementById("enquiry").addEventListener("submit", async e => {
   if (document.getElementById("honey").value) return; // spam bot
   btn.disabled = true; btn.textContent = "Sending…";
   const data = {
-    _subject: "J'aimeKids website: " + f.type.value,
-    _template: "table", _captcha: "false",
+    access_key: FORM_KEY,
+    subject: "J'aimeKids website: " + f.type.value,
+    from_name: "J'aimeKids website",
     "Enquiry type": f.type.value, Name: f.name.value.trim(), Organisation: f.org.value.trim(),
     email: f.email.value.trim(), Phone: f.phone.value.trim(), Province: f.province.value,
     Message: f.msg.value.trim(), "POPIA consent": "Yes"
@@ -680,11 +682,6 @@ document.getElementById("enquiry").addEventListener("submit", async e => {
   try {
     const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) });
     const j = await r.json().catch(() => ({}));
-    if (/activat/i.test(j.message || "")) {
-      n.style.background = "#fff4d6"; n.style.color = "#7a5300";
-      n.textContent = "Almost there: this contact form still needs to be activated. Please check the J'aimeKids inbox for the activation email from FormSubmit.";
-      n.classList.add("show"); return;
-    }
     if (!r.ok || String(j.success) === "false") throw new Error(j.message || ("HTTP " + r.status));
     n.style.background = ""; n.style.color = "";
     n.textContent = "Thank you, " + data.Name + ". Your message has been sent and we'll be in touch soon.";
