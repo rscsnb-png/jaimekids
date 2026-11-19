@@ -110,7 +110,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdro
 .campaign{background:var(--ink);color:#fff}
 .campaign .eyebrow{color:var(--yellow)}
 .campaign .lead{color:#d7d4e6;font-size:1.15rem;margin-top:12px}
-.camp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:40px}
+.camp-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px;max-width:860px}
 @media (max-width:900px){.camp-grid{grid-template-columns:1fr}}
 .amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:560px){.amounts{grid-template-columns:repeat(2,1fr)}}
@@ -308,6 +308,7 @@ footer .logo{width:96px;height:96px;border-radius:50%;margin-bottom:14px}
       <h2 style="margin-top:12px">Every Child Deserves Christmas</h2>
       <p class="lead prose">For many children, Christmas means excitement, presents and treasured memories. For others it passes without any celebration at all. This year we're bringing our Christmas initiative back on a national scale, delivering gifts and festive treats to 350 children in four provinces.</p>
 
+      <div class="provinces" style="margin-top:18px"><span>Mpumalanga</span><span>Gauteng</span><span>Western Cape</span><span>KwaZulu-Natal</span></div>
       <div class="camp-grid">
         <div>
           <h3>Choose your gift</h3>
@@ -338,25 +339,6 @@ footer .logo{width:96px;height:96px;border-radius:50%;margin-bottom:14px}
             <a href="https://www.facebook.com/groups/jaimekids" target="_blank" rel="noopener">Join our Facebook group</a>
           </div>
           <p class="tags">#ChristmasGiving #EveryChildMatters #MakingADifference #SouthAfrica #SeasonOfGiving</p>
-        </div>
-
-        <div class="panel">
-          <h3>Where your money goes</h3>
-          <table style="margin-top:12px">
-            <thead><tr><th>Expense</th><th>Amount</th></tr></thead>
-            <tbody>
-              <tr><td>Christmas gifts</td><td>R35 000</td></tr>
-              <tr><td>Sweets and festive treats</td><td>R8 750</td></tr>
-              <tr><td>Gift wrapping and packaging</td><td>R3 500</td></tr>
-              <tr><td>Transport and distribution</td><td>R5 250</td></tr>
-              <tr><td>Transaction fee allowance</td><td>R2 250</td></tr>
-              <tr class="total"><td>Fundraising target</td><td>R54 750</td></tr>
-            </tbody>
-          </table>
-          <p class="small">The estimated direct cost of supporting one child is R150, excluding transaction fees. This is our proposed budget and may change as arrangements are finalised.</p>
-          <h3 style="margin-top:24px;font-size:1.1rem">Reaching children in</h3>
-          <div class="provinces"><span>Mpumalanga</span><span>Gauteng</span><span>Western Cape</span><span>KwaZulu-Natal</span></div>
-          <p class="small">Individuals, families, churches, businesses and corporate teams are all welcome to take part.</p>
         </div>
       </div>
     </div>
